@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@0;1&display=swap');
+
+*
+{
+    box-sizing: border-box;
+}
+
+/*To style the Google Font*/
+.mulish
+{
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*To style the contents within the body*/
+body
+{
+    background-color: rgb(160, 160, 161);
+    font-family: "Mulish", sans-serif;
+    display: flex; /*The progress bar will be a flexbox*/
+    flex-direction: column; /*The flexbox should be in column format*/
+    align-items: center; /*Align items in the center of flexbox*/
+    justify-content: center; /*Justify all contents in the center of the flexbox elements*/
+    height: 100vh; /*The height of the flexbox will be 100 viewport height*/
+    overflow: hidden; /*No overflow is allowed in the flexbox*/
+    margin: 0; /*Overall flexbox margin is set to be 0*/
+}
+
+:root
+{
+    --line-border-fill: rgb(34, 34, 244); /*The colour used for filling the bar*/
+    --line-border-empty: rgb(175, 238, 238); /*The colour used while bar the empty*/
+}
+
+.container
+{
+    text-align: center;
+}
+
+/*To style the value elements and the progress bar*/
+.progress-container
+{
+    display: flex;
+    justify-content: space-between; /*To place the progress bar values with equal seperated values*/
+    position: relative; /*It is used to make the ::before value as absolute*/
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+/*To style the progress bar and keep it behind the circles using a pseudo element*/
+.progress-container::before
+{
+    content: ''; /*Sets an empty value for the pseudo element*/
+    background-color: var(--line-border-empty);
+    position: absolute; /*It is placed in absolute position to the above class*/
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    transform: translateY(-50%);/*Make it properly in the center*/
+    z-index: -1; /*Take it to the backside of the numbers*/
+    transition: 0.4s ease;
+}
+
+.progress
+{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle
+{
+    background-color: white;
+    color: rgb(30, 25, 25);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active
+{
+    border-color: var(--line-border-fill);
+}
+
+.btn
+{
+    background-color: var(--line-border-fill);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active
+{
+    transform: scale(1.1); /*Scales up the size of the button*/
+}
+
+.btn:disabled
+{
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+    color: black;
+}
